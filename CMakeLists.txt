@@ -13,14 +13,14 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LINKER_SPECS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions -fno-rtti")
 
 ## linker scipt
-set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32L452RETxP_FLASH.ld)
+set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/aux/STM32L452RETxP_FLASH.ld)
 
 ## CMSIS
 set(CMSIS_COMMON_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/Drivers/CMSIS/Include")
 set(CMSIS_DEVICE_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32L4xx/Include")
 set(CMSIS_INCLUDE_DIR ${CMSIS_COMMON_INCLUDE_DIR} ${CMSIS_DEVICE_INCLUDE_DIR})
 
-set(CMSIS_STARTUP_SOURCE ${CMAKE_SOURCE_DIR}/startup_stm32l452xx.s)
+set(CMSIS_STARTUP_SOURCE ${CMAKE_SOURCE_DIR}/aux/startup_stm32l452xx.s)
 
 ## HAL
 set(HAL_INCLUDE_DIR 
@@ -47,7 +47,7 @@ target_compile_definitions(${TARGET} PUBLIC
 )
 
 target_link_options(${TARGET} PRIVATE -T${LINKER_SCRIPT})
-target_link_libraries(${TARGET} PRIVATE ${CMAKE_SOURCE_DIR}/libarm_cortexM4lf_math.a)
+target_link_libraries(${TARGET} PRIVATE ${CMAKE_SOURCE_DIR}/aux/libarm_cortexM4lf_math.a)
 
 set_target_properties(${TARGET} PROPERTIES CXX_STANDARD 14)
 set_target_properties(${TARGET} PROPERTIES C_STANDARD 11)

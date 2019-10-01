@@ -8,7 +8,7 @@
             "name": "Debug OpenOCD",
             "type": "cortex-debug",
             "cwd": "${workspaceFolder}",
-            "svdFile": "${workspaceFolder}/STM32L4x2.svd",
+            "svdFile": "${workspaceFolder}/aux/STM32L4x2.svd",
             "configFiles": [
                 "${env:OPENOCD_ROOT}/scripts/interface/stlink.cfg",
                 "${env:OPENOCD_ROOT}/scripts/target/stm32l4x.cfg"
@@ -29,7 +29,7 @@
             "type": "cortex-debug",
             "device": "STM32L452RE",
             "v1": false,
-            "svdFile": "${workspaceRoot}/STM32L4x2.svd"
+            "svdFile": "${workspaceRoot}/aux/STM32L4x2.svd"
         }
     ]
 }

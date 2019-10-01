@@ -8,8 +8,7 @@ set(TARGET_BASE_NAME ${PROJECT_NAME})
 include(${CMAKE_SOURCE_DIR}/cmake/arm-gcc-flags.cmake)
 
 ## enabling c++
-set(LINKER_SPECS "--specs=nosys.specs")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LINKER_SPECS}")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --specs=nosys.specs")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions -fno-rtti")
 
 ## linker scipt
@@ -29,7 +28,7 @@ set(HAL_INCLUDE_DIR
 )
 
 ## target executable
-add_executable(${TARGET} "")
+add_executable(${TARGET})
 
 ## adding sources
 target_sources(${TARGET} PUBLIC ${CMSIS_STARTUP_SOURCE})

@@ -6,7 +6,7 @@ set -ex
 
 set_clang() {
     if [ ${TRAVIS_OS_NAME} = "linux" ]; then
-        # Make package installation path preceed Travis installed packages in /usr/local/bin
+        ## Make package installation path preceed Travis installed packages in /usr/local/bin
         export PATH=/usr/bin:$PATH
         sudo update-alternatives --install /usr/bin/clang clang /usr/bin/${C_COMPILER} 1000 --slave /usr/bin/clang++ clang++ /usr/bin/${CXX_COMPILER}
         sudo update-alternatives --install /usr/bin/llvm-size llvm-size /usr/bin/${SIZE} 1000
@@ -19,7 +19,7 @@ set_clang() {
 
     clang --version
     llvm-size --version || true
-    # LLVM objcopy version 7 misses `--version` support
+    ## LLVM objcopy version 7 misses `--version` support
     llvm-objcopy -version || true
     lld --version || true
 }
@@ -30,7 +30,7 @@ if [ ! -z "${TRAVIS+set}" ]; then
         set_clang
         ;;
     *gcc*)
-        # Do nothing here at that point
+        ## Do nothing here at that point
         ;;
     *)
         exit 1
@@ -38,7 +38,7 @@ if [ ! -z "${TRAVIS+set}" ]; then
     esac
 fi
 
-# Download ARM GCC toolchain from the official site
+## Download ARM GCC toolchain from the official site
 case "${TRAVIS_OS_NAME}" in
     linux)
         ARM_GCC_URI="https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2"
@@ -61,7 +61,15 @@ export PATH=${PROJECT_ROOT}/gcc-arm-none-eabi/bin:$PATH
 
 arm-none-eabi-gcc --version
 
-# cd ${PROJECT_ROOT}
+## trying to update cmake
+cmake --version
+curl -k -L https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-Linux-x86_64.sh
+chmod +x cmake-3.15.3-Linux-x86_64.sh
+sh cmake-3.15.3-Linux-x86_64.sh
+export PATH=${PROJECT_ROOT}/cmake-3.15.3-Linux-x86_64/bin:$PATH
+cmake --version
+
+cd ${PROJECT_ROOT}
 
 if [ "${C_COMPILER}" != "${C_COMPILER%*clang*}" ]; then
     mkdir -p build-clang

@@ -99,3 +99,6 @@ matrix:
 
 script:
   - sh ci/exec.sh
+
+notifications:
+  email: false

@@ -51,11 +51,11 @@ set_target_properties(${TARGET} PROPERTIES CXX_STANDARD 14)
 set_target_properties(${TARGET} PROPERTIES C_STANDARD 11)
 
 ## custom target
-add_custom_target(${TARGET_BASE_NAME}.hex ALL
+add_custom_target(${TARGET_BASE_NAME}.hex 
     DEPENDS ${TARGET} 
     COMMAND ${CMAKE_OBJCOPY} -Oihex ${TARGET} ${TARGET_BASE_NAME}.hex
 )
-add_custom_target(${TARGET_BASE_NAME}.bin ALL
+add_custom_target(${TARGET_BASE_NAME}.bin 
     DEPENDS ${TARGET} 
     COMMAND ${CMAKE_OBJCOPY} -Obinary ${TARGET} ${TARGET_BASE_NAME}.bin
 )

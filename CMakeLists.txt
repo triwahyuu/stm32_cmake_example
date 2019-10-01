@@ -43,7 +43,6 @@ target_include_directories(${TARGET} PUBLIC
 )
 target_compile_definitions(${TARGET} PUBLIC 
     "USE_HAL_DRIVER" 
-    "USE_FULL_ASSERT"
     "STM32L452xx" 
 )
 

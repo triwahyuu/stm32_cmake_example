@@ -11,7 +11,7 @@ matrix:
 
     # ARM GCC (Linux)
     - os: linux
-      name: "ARM GCC"
+      name: "Linux ARM GCC"
       env:
         - "C_COMPILER=arm-none-eabi-gcc"
         - "CXX_COMPILER=arm-none-eabi-g++"
@@ -26,7 +26,37 @@ matrix:
             - ninja-build
 
     - os: linux
-      name: "ARM GCC Make"
+      name: "Linux ARM GCC Make"
+      env:
+        - "C_COMPILER=arm-none-eabi-gcc"
+        - "CXX_COMPILER=arm-none-eabi-g++"
+        - "SIZE=arm-none-eabi-size"
+        - "OBJCOPY=arm-none-eabi-objcopy"
+        - "LINKER=arm-none-eabi-ld"
+        - "LLD=arm-none-eabi-ld.bfd"
+        - "USE_NINJA=0"
+    
+    # ARM GCC (macOS)
+    - os: osx
+      osx_image: xcode10.1
+      name: "Mac OSX ARM GCC"
+      env:
+        - "C_COMPILER=arm-none-eabi-gcc"
+        - "CXX_COMPILER=arm-none-eabi-g++"
+        - "SIZE=arm-none-eabi-size"
+        - "OBJCOPY=arm-none-eabi-objcopy"
+        - "LINKER=arm-none-eabi-ld"
+        - "LLD=arm-none-eabi-ld.bfd"
+        - "USE_NINJA=1"
+      addons:
+        homebrew:
+          packages:
+            - ninja-build
+          update: true
+
+    - os: osx
+      osx_image: xcode10.1
+      name: "Mac OSX ARM GCC Make"
       env:
         - "C_COMPILER=arm-none-eabi-gcc"
         - "CXX_COMPILER=arm-none-eabi-g++"

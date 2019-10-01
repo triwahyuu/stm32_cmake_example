@@ -7,7 +7,20 @@ set -ex
 PROJECT_ROOT="`pwd`"
 
 ## Download ARM GCC toolchain from the official site
-curl -k -L https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2 -o gcc-arm-none-eabi.tar.bz2
+case "${TRAVIS_OS_NAME}" in
+    linux)
+        ARM_GCC_URI="https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-linux.tar.bz2"
+        ;;
+    osx)
+        ARM_GCC_URI="https://developer.arm.com/-/media/Files/downloads/gnu-rm/8-2018q4/gcc-arm-none-eabi-8-2018-q4-major-mac.tar.bz2"
+        ;;
+    *)
+        >&2 echo "Unknown OS"
+        exit 1
+        ;;
+esac
+
+curl -k -L ${ARM_GCC_URI} -o gcc-arm-none-eabi.tar.bz2
 tar jxf gcc-arm-none-eabi.tar.bz2
 find . -maxdepth 1 -type d -path "*gcc*" -not -path . -exec mv {} gcc-arm-none-eabi \;
 export PATH=${PROJECT_ROOT}/gcc-arm-none-eabi/bin:$PATH

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.5)
 project(cmake_example C CXX ASM)
 
 set(TARGET ${PROJECT_NAME}.elf)
@@ -46,9 +46,8 @@ target_compile_definitions(${TARGET} PUBLIC
     "STM32L452xx" 
 )
 
-target_link_options(${TARGET} PRIVATE -T${LINKER_SCRIPT})
 target_link_libraries(${TARGET} PRIVATE ${CMAKE_SOURCE_DIR}/aux/libarm_cortexM4lf_math.a)
-
+set_target_properties(${TARGET} PROPERTIES LINK_OPTIONS -T${LINKER_SCRIPT})
 set_target_properties(${TARGET} PROPERTIES CXX_STANDARD 14)
 set_target_properties(${TARGET} PROPERTIES C_STANDARD 11)
 

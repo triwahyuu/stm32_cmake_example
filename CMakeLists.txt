@@ -63,3 +63,11 @@ add_custom_target(${TARGET_BASE_NAME}.bin ALL
 add_custom_command(TARGET ${TARGET} POST_BUILD 
     COMMAND ${CMAKE_SIZE_UTIL} ${TARGET}
 )
+
+add_custom_target(flash
+    DEPENDS ${TARGET} 
+    COMMAND openocd 
+        -f $ENV{OPENOCD_ROOT}/scripts/interface/stlink.cfg 
+        -f $ENV{OPENOCD_ROOT}/scripts/target/stm32l4x.cfg 
+        -c 'program ${CMAKE_SOURCE_DIR}/build/${TARGET} verify reset exit'
+)

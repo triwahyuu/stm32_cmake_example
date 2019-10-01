@@ -41,7 +41,7 @@
                 "-f",
                 "${env:OPENOCD_ROOT}/scripts/target/stm32l4x.cfg",
                 "-c",
-                "program build/cmake_example.elf verify reset exit"
+                "'program build/cmake_example.elf verify reset exit'"
             ],
             "dependsOn": "build"
         },

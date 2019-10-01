@@ -1,0 +1,54 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}",
+                "${CUBEMX_INCLUDES}",
+                "${GCC_INCLUDES}"
+            ],
+            "defines": [
+                "__weak=\"__attribute__((weak))\"",
+                "__packed=\"__attribute__((__packed__))\"",
+                "__GNUC__",
+                "STM32L452xx",
+                "USE_FULL_ASSERT",
+                "USE_HAL_DRIVER"
+            ],
+            "compilerPath": "${env:ARM_GCC_ROOT}/bin/arm-none-eabi-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "${CUBEMX_INCLUDES}",
+                    "${GCC_INCLUDES}"
+                ],
+                "limitSymbolsToIncludedHeaders": false
+            }
+        }
+    ],
+    "env": {
+        "CUBEMX_INCLUDES": [
+            "Inc",
+            "Drivers/STM32L4xx_HAL_Driver/Inc",
+            "Drivers/STM32L4xx_HAL_Driver/Inc/Legacy",
+            "Drivers/CMSIS/Device/ST/STM32L4xx/Include",
+            "Drivers/CMSIS/Include"
+        ],
+        "GCC_INCLUDES": [
+            "${env:ARM_GCC_ROOT}/arm-none-eabi/include",
+            "${env:ARM_GCC_ROOT}/arm-none-eabi/include/c++/8.2.1",
+            "${env:ARM_GCC_ROOT}/arm-none-eabi/include/c++/8.2.1/arm-none-eabi",
+            "${env:ARM_GCC_ROOT}/arm-none-eabi/include/c++/8.2.1/backward",
+            "${env:ARM_GCC_ROOT}/lib/gcc/arm-none-eabi/8.2.1/include",
+            "${env:ARM_GCC_ROOT}/lib/gcc/arm-none-eabi/8.2.1/include-fixed"
+        ],
+        "CUBEMX_DEFINES": [
+            "USE_HAL_DRIVER",
+            "STM32L452xx"
+        ]
+    },
+    "version": 4
+}

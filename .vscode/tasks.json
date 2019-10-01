@@ -1,0 +1,77 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "/usr/bin/make",
+            "args": [
+                "-j4",
+                "all"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "/usr/bin/make clean",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            }
+        },
+        {
+            "label": "flash",
+            "type": "shell",
+            "problemMatcher": [],
+            "command": "${env:OPENOCD_ROOT}/bin/openocd",
+            "args": [
+                "-f",
+                "${env:OPENOCD_ROOT}/scripts/interface/stlink.cfg",
+                "-f",
+                "${env:OPENOCD_ROOT}/scripts/target/stm32l4x.cfg",
+                "-c",
+                "program build/cmake_example.elf verify reset exit"
+            ],
+            "dependsOn": "build"
+        },
+        {
+            "label": "flash stlink",
+            "type": "shell",
+            "command": "st-flash write ./build/cmake_example.bin 0x08000000",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "run",
+            "dependsOn": [
+                "flash"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "configure",
+            "type": "shell",
+            "command": "cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-toolchain.cmake",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            }
+        },
+    ]
+}

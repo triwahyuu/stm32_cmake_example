@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug OpenOCD",
+            "type": "cortex-debug",
+            "cwd": "${workspaceFolder}",
+            "svdFile": "${workspaceFolder}/STM32L4x2.svd",
+            "configFiles": [
+                "${env:OPENOCD_ROOT}/scripts/interface/stlink.cfg",
+                "${env:OPENOCD_ROOT}/scripts/target/stm32l4x.cfg"
+            ],
+            "executable": "Debug/${workspaceFolderBasename}.elf",
+            "preLaunchTask": "run",
+            "servertype": "openocd",
+            "device": "STM32L452xx",
+            "request": "launch"
+        },
+        {
+            "name": "Debug ST-Util",
+            "servertype": "stutil",
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "run",
+            "executable": "${workspaceRoot}/Debug/${workspaceFolderBasename}.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device": "STM32L452RE",
+            "v1": false,
+            "svdFile": "${workspaceRoot}/STM32L4x2.svd"
+        }
+    ]
+}

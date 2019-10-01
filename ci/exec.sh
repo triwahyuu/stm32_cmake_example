@@ -62,12 +62,12 @@ export PATH=${PROJECT_ROOT}/gcc-arm-none-eabi/bin:$PATH
 arm-none-eabi-gcc --version
 
 ## trying to update cmake
-cmake --version
-curl -k -L https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-Linux-x86_64.sh
-chmod +x cmake-3.15.3-Linux-x86_64.sh
-sh cmake-3.15.3-Linux-x86_64.sh
-export PATH=${PROJECT_ROOT}/cmake-3.15.3-Linux-x86_64/bin:$PATH
-cmake --version
+# cmake --version
+# curl -k -L https://github.com/Kitware/CMake/releases/download/v3.15.3/cmake-3.15.3-Linux-x86_64.sh -o cmake-3.15.3-Linux-x86_64.sh
+# chmod +x cmake-3.15.3-Linux-x86_64.sh
+# sh cmake-3.15.3-Linux-x86_64.sh
+# export PATH=${PROJECT_ROOT}/cmake-3.15.3-Linux-x86_64/bin:$PATH
+# cmake --version
 
 cd ${PROJECT_ROOT}
 

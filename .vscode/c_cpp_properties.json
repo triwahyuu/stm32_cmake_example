@@ -26,7 +26,8 @@
                     "${GCC_INCLUDES}"
                 ],
                 "limitSymbolsToIncludedHeaders": false
-            }
+            },
+            "configurationProvider": "vector-of-bool.cmake-tools"
         }
     ],
     "env": {

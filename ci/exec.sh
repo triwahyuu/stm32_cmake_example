@@ -66,15 +66,15 @@ arm-none-eabi-gcc --version
 if [ "${C_COMPILER}" != "${C_COMPILER%*clang*}" ]; then
     mkdir -p build-clang
     cd build-clang
-    cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=${PROJECT_ROOT}/clang-arm-gcc-toolchain.cmake
+    cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=${PROJECT_ROOT}/cmake/clang-arm-gcc-toolchain.cmake
 elif [ ${USE_NINJA} = 1 ]; then
     mkdir -p build-gcc
     cd build-gcc
-    cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=${PROJECT_ROOT}/arm-gcc-toolchain.cmake
+    cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=${PROJECT_ROOT}/cmake/arm-gcc-toolchain.cmake
 else 
     mkdir -p build-gcc-make
     cd build-gcc-make
-    cmake .. -DCMAKE_TOOLCHAIN_FILE=${PROJECT_ROOT}/arm-gcc-toolchain.cmake
+    cmake .. -DCMAKE_TOOLCHAIN_FILE=${PROJECT_ROOT}/cmake/arm-gcc-toolchain.cmake
 fi
 
 cmake --build . --j2

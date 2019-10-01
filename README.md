@@ -1,5 +1,5 @@
 # Example STM32 Project with CMake
-This repository uses NUCLEO-STM32L452RE-P board.
+This repository uses NUCLEO-STM32L452RE-P board. The CMake toolchain file is obtained from [`vpetrigo/arm-cmake-toolchains`](https://github.com/vpetrigo/arm-cmake-toolchains)
 
 ## BUILD
 To build the project don't forget to specify the toolchain in the cmake:

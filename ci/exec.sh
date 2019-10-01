@@ -85,4 +85,4 @@ else
     cmake .. -DCMAKE_TOOLCHAIN_FILE=${PROJECT_ROOT}/cmake/arm-gcc-toolchain.cmake
 fi
 
-cmake --build . --j2
+cmake --build . -j2

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/triwahyuu/stm32_cmake_example.svg?branch=master)](https://travis-ci.com/triwahyuu/stm32_cmake_example)
+
 # Example STM32 Project with CMake
 This repository uses NUCLEO-STM32L452RE-P board. The CMake toolchain file is obtained from [`vpetrigo/arm-cmake-toolchains`](https://github.com/vpetrigo/arm-cmake-toolchains)
 

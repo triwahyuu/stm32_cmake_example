@@ -1,6 +1,7 @@
 ## Modified from https://github.com/vpetrigo/arm-cmake-toolchains/blob/master/.travis.yml
 language: cpp
 dist: xenial
+sudo: true
 branches:
   only:
     - master
@@ -27,6 +28,7 @@ matrix:
           packages:
             - ninja-build
             - gcc-arm-embedded
+          update: true
 
     - os: linux
       name: "Linux ARM GCC Make"
@@ -44,6 +46,7 @@ matrix:
             - sourceline: 'ppa:team-gcc-arm-embedded/ppa'
           packages:
             - gcc-arm-embedded
+          update: true
     
     # ARM GCC (macOS)
     - os: osx
@@ -59,6 +62,7 @@ matrix:
         - "USE_NINJA=1"
       addons:
         homebrew:
+          taps: ArmMbed/homebrew-formulae
           packages:
             - ninja
             - arm-none-eabi-gcc
@@ -77,6 +81,7 @@ matrix:
         - "USE_NINJA=0"
       addons:
         homebrew:
+          taps: ArmMbed/homebrew-formulae
           packages:
             - arm-none-eabi-gcc
           update: true

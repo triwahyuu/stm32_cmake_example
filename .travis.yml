@@ -22,8 +22,11 @@ matrix:
         - "USE_NINJA=1"
       addons:
         apt:
+          sources:
+            - sourceline: 'ppa:team-gcc-arm-embedded/ppa'
           packages:
             - ninja-build
+            - gcc-arm-embedded
 
     - os: linux
       name: "Linux ARM GCC Make"
@@ -35,6 +38,12 @@ matrix:
         - "LINKER=arm-none-eabi-ld"
         - "LLD=arm-none-eabi-ld.bfd"
         - "USE_NINJA=0"
+      addons:
+        apt:
+          sources:
+            - sourceline: 'ppa:team-gcc-arm-embedded/ppa'
+          packages:
+            - gcc-arm-embedded
     
     # ARM GCC (macOS)
     - os: osx
@@ -52,6 +61,7 @@ matrix:
         homebrew:
           packages:
             - ninja
+            - arm-none-eabi-gcc
           update: true
 
     - os: osx
@@ -65,6 +75,11 @@ matrix:
         - "LINKER=arm-none-eabi-ld"
         - "LLD=arm-none-eabi-ld.bfd"
         - "USE_NINJA=0"
+      addons:
+        homebrew:
+          packages:
+            - arm-none-eabi-gcc
+          update: true
 
 script:
   - sh ci/exec.sh

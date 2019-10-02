@@ -51,7 +51,7 @@ matrix:
       addons:
         homebrew:
           packages:
-            - ninja-build
+            - ninja
           update: true
 
     - os: osx

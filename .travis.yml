@@ -1,7 +1,7 @@
 ## Modified from https://github.com/vpetrigo/arm-cmake-toolchains/blob/master/.travis.yml
 language: cpp
 dist: xenial
-sudo: true
+sudo: required
 branches:
   only:
     - master
@@ -25,8 +25,11 @@ matrix:
         apt:
           sources:
             - sourceline: 'ppa:team-gcc-arm-embedded/ppa'
+            - sourceline: 'deb https://apt.kitware.com/ubuntu/ xenial main'
+              key_url: 'https://apt.kitware.com/keys/kitware-archive-latest.asc'
           packages:
             - ninja-build
+            - cmake
             - gcc-arm-embedded
           update: true
 
@@ -44,7 +47,10 @@ matrix:
         apt:
           sources:
             - sourceline: 'ppa:team-gcc-arm-embedded/ppa'
+            - sourceline: 'deb https://apt.kitware.com/ubuntu/ xenial main'
+              key_url: 'https://apt.kitware.com/keys/kitware-archive-latest.asc'
           packages:
+            - cmake
             - gcc-arm-embedded
           update: true
     
@@ -65,6 +71,7 @@ matrix:
           taps: ArmMbed/homebrew-formulae
           packages:
             - ninja
+            - cmake
             - arm-none-eabi-gcc
           update: true
 
@@ -83,6 +90,7 @@ matrix:
         homebrew:
           taps: ArmMbed/homebrew-formulae
           packages:
+            - cmake
             - arm-none-eabi-gcc
           update: true
 

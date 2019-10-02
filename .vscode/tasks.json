@@ -43,19 +43,19 @@
                 "-c",
                 "'program build/cmake_example.elf verify reset exit'"
             ],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
             "dependsOn": "build"
         },
         {
             "label": "flash stlink",
             "type": "shell",
-            "command": "st-flash write ./build/cmake_example.bin 0x08000000",
+            "command": "st-flash write build/cmake_example.bin 0x08000000",
             "options": {
                 "cwd": "${workspaceRoot}"
             },
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
+            "dependsOn": "build",
             "problemMatcher": []
         },
         {
@@ -68,10 +68,20 @@
         {
             "label": "configure",
             "type": "shell",
-            "command": "cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-toolchain.cmake",
+            "command": "rm -rf * && cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-toolchain.cmake",
             "options": {
                 "cwd": "${workspaceRoot}/build"
-            }
+            },
+            "problemMatcher": []
         },
+        {
+            "label": "configure release",
+            "type": "shell",
+            "command": "rm -rf * && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-gcc-toolchain.cmake",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "problemMatcher": []
+        }
     ]
 }

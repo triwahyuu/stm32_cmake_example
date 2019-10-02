@@ -13,7 +13,7 @@
                 "${env:OPENOCD_ROOT}/scripts/interface/stlink.cfg",
                 "${env:OPENOCD_ROOT}/scripts/target/stm32l4x.cfg"
             ],
-            "executable": "Debug/${workspaceFolderBasename}.elf",
+            "executable": "build/cmake_example.elf",
             "preLaunchTask": "run",
             "servertype": "openocd",
             "device": "STM32L452xx",
@@ -24,7 +24,7 @@
             "servertype": "stutil",
             "cwd": "${workspaceRoot}",
             "preLaunchTask": "run",
-            "executable": "${workspaceRoot}/Debug/${workspaceFolderBasename}.elf",
+            "executable": "build/cmake_example.elf",
             "request": "launch",
             "type": "cortex-debug",
             "device": "STM32L452RE",

@@ -1,5 +1,7 @@
 .mxproject
 build/
 
+.vscode/.cortex-debug.*
+
 .vscode/settings.json
 Makefile

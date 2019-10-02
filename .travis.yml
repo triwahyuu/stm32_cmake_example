@@ -22,7 +22,7 @@ matrix:
         - "LLD=arm-none-eabi-ld.bfd"
         - "USE_NINJA=1"
       before_install:
-        - sudo apt-get purge -y cmake
+        - sudo apt-get purge cmake
       addons:
         apt:
           sources:
@@ -46,7 +46,7 @@ matrix:
         - "LLD=arm-none-eabi-ld.bfd"
         - "USE_NINJA=0"
       before_install:
-        - sudo apt-get purge -y cmake
+        - sudo apt-get purge cmake
       addons:
         apt:
           sources:

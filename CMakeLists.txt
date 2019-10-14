@@ -52,7 +52,6 @@ target_compile_definitions(${TARGET} PUBLIC
     ${STM32_DEVICE}
 )
 
-target_link_libraries(${TARGET} PRIVATE )
 set_target_properties(${TARGET} PROPERTIES LINK_OPTIONS -T${LINKER_SCRIPT})
 set_target_properties(${TARGET} PROPERTIES CXX_STANDARD 14)
 set_target_properties(${TARGET} PROPERTIES C_STANDARD 11)

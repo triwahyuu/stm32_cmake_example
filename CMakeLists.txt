@@ -14,7 +14,7 @@ string(TOLOWER ${STM32_DEVICE} STM32_DEVICE_LOWER)
 
 ### files
 set(LINKER_SCRIPT "${CMAKE_SOURCE_DIR}/aux/STM32L452RETxP_FLASH.ld")    # linker scipt
-set(CORTEXM4_MATH "${CMAKE_SOURCE_DIR}/aux/libarm_cortexM4lf_math.a")   # cortex m4 math library
+# set(CORTEXM4_MATH "${CMAKE_SOURCE_DIR}/aux/libarm_cortexM4lf_math.a")   # cortex m4 math library
 set(CMSIS_STARTUP_SOURCE "${CMAKE_SOURCE_DIR}/aux/startup_${STM32_DEVICE_LOWER}.s") # startup file
 
 ### CMSIS
